@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Double Take — Spot the Difference</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <header id="topbar">
+    <div class="brand">DOUBLE&nbsp;TAKE</div>
+    <div class="subtitle">spot the difference &middot; detective edition</div>
+    <div id="hud" class="hidden">
+      <div class="hud-item"><span class="hud-label">Level</span><span id="hud-level">1 / 5</span></div>
+      <div class="hud-item"><span class="hud-label">Found</span><span id="hud-found">0 / 7</span></div>
+      <div class="hud-item"><span class="hud-label">Score</span><span id="hud-score">0</span></div>
+      <div class="hud-item timer"><span class="hud-label">Time</span><span id="hud-time">2:30</span></div>
+    </div>
+  </header>
+
+  <div id="timerbar"><div id="timerfill"></div></div>
+
+  <!-- Menu screen -->
+  <section id="menu" class="screen">
+    <h1>Double Take</h1>
+    <p class="tagline">Two pictures. Seven differences. One sharp eye.</p>
+    <p class="howto">Click a difference on either picture to circle it. Wrong clicks cost 5 seconds.
+      Press <b>H</b> for a hint (&minus;150 pts), <b>R</b> to restart the level, <b>M</b> to mute.</p>
+    <div id="level-cards"></div>
+    <p class="foot">Five hand-drawn scenes &middot; 35 differences &middot; hints, timer and stars on every level.</p>
+  </section>
+
+  <!-- Play screen -->
+  <section id="play" class="screen hidden">
+    <div id="level-title">Level 1 &mdash; Sunny Beach</div>
+    <div id="boards">
+      <figure class="panel">
+        <canvas id="panelA" width="460" height="340"></canvas>
+        <figcaption>Picture A</figcaption>
+      </figure>
+      <div id="vs">VS</div>
+      <figure class="panel">
+        <canvas id="panelB" width="460" height="340"></canvas>
+        <figcaption>Picture B</figcaption>
+      </figure>
+    </div>
+    <div id="controls">
+      <button id="btn-hint" type="button">Hint (H) &middot; 3 left</button>
+      <button id="btn-restart" type="button">Restart (R)</button>
+      <button id="btn-sound" type="button">Sound: on (M)</button>
+      <button id="btn-menu" type="button">Menu</button>
+    </div>
+    <div id="toast"></div>
+  </section>
+
+  <!-- Level complete overlay -->
+  <section id="level-done" class="screen overlay hidden">
+    <div class="card">
+      <h2 id="done-title">Level Complete!</h2>
+      <div id="done-stars" class="stars"></div>
+      <p id="done-detail"></p>
+      <p id="done-score"></p>
+      <button id="btn-next" type="button" class="primary">Next level (N)</button>
+      <button id="btn-replay" type="button">Replay level</button>
+      <button id="btn-done-menu" type="button">Menu</button>
+    </div>
+  </section>
+
+  <!-- Game complete overlay -->
+  <section id="game-done" class="screen overlay hidden">
+    <div class="card">
+      <h2>Case Closed!</h2>
+      <div class="stars">&#9733;&#9733;&#9733;</div>
+      <p>You spotted every difference in all five scenes.</p>
+      <p id="final-score"></p>
+      <button id="btn-again" type="button" class="primary">Play again</button>
+      <button id="btn-final-menu" type="button">Menu</button>
+    </div>
+  </section>
+
+  <!-- Time up overlay -->
+  <section id="time-up" class="screen overlay hidden">
+    <div class="card">
+      <h2>Out of time!</h2>
+      <p id="timeup-detail"></p>
+      <button id="btn-retry" type="button" class="primary">Try again (R)</button>
+      <button id="btn-time-menu" type="button">Menu</button>
+    </div>
+  </section>
+</div>
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
